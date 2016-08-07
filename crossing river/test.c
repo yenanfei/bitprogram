@@ -1,0 +1,50 @@
+#include<stdio.h>
+int main()
+{
+	int n,i,a[1000],j,tmp,t1,t2,s=0;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+	for(i=0;i<n;i++)
+		for(j=0;j<n-1;j++)
+			{
+				if(a[j]>a[j+1])
+					{
+						tmp=a[j];
+						a[j]=a[j+1];
+						a[j+1]=tmp;
+					}
+			}
+
+	for(;n>0;)
+		{
+			if(n==1)
+				{
+					s+=a[0];
+					break;
+				}
+			if(n==2)
+				{
+					s+=a[1];
+					break;
+				}
+			if(n==3)
+				{
+					s+=a[0]+a[1]+a[2];
+					break;
+				}
+			if(n>3)
+			{
+				t1=a[1]+a[0]+a[n-1]+a[1]+a[1];
+				t2=a[n-1]+a[0]+a[1]+a[0]+a[n-2];	
+				if(t1>t2)
+					s+=2*a[0]+a[n-1]+a[n-2];
+				else
+					s+=2*a[1]+a[0]+a[n-1];
+				n-=2;
+			}
+		}
+	printf("%d\n",s);
+}

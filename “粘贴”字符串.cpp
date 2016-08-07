@@ -1,0 +1,25 @@
+#include<stdio.h>
+main()
+{
+	char s1[100]={'\0'},s2[100]={'\0'},s3[100]={'\0'},m;int i,n1,n2,j,p;
+	gets(s1);
+	gets(s2);
+	scanf("%c",&m);
+	n1=strlen(s1);n2=strlen(s2);
+	for(i=0;i<n1;i++)
+	{
+		s3[i]=s1[i];
+		if(s1[i]==m)	
+		break;
+	}
+	if(i==n1)
+	p=i;
+	else
+	p=i+1;
+	for(j=0;s2[j]!='\0';j++,p++)
+	s3[p]=s2[j];
+	if(i!=n1)
+	for(i++;s1[i]!='\0';i++,p++)
+	s3[p]=s1[i];
+	printf("%s\n",s3);
+} 

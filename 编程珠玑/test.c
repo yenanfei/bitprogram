@@ -1,0 +1,85 @@
+#include<stdio.h>
+int main()
+{
+	int i,N,flag=1,max=0;
+	char a[10000];
+	scanf("%d",&N);
+	scanf("%s",a);
+	for(i=1;i<N;i++)
+		{	
+			int s=0,tmp1=i,tmp2=i+1,p=i+1;int j=0;
+
+			while(1)//向前推算 
+				{	
+					if(a[i]=='w')
+						{
+							a[i]=a[i-1];
+							j=1;
+						} 
+					if(a[tmp1-1]==a[i]||a[tmp1-1]=='w')
+						{
+							if(tmp1==1)
+								{
+								if(a[i]==a[N-1]||a[N-1]=='w')
+									{
+										s++;
+										tmp1=N-1;
+										if(s>N)
+											break;
+									}
+								else
+										break;
+								}
+							else
+								{
+									s++;
+									tmp1--;
+									if(s>N)
+										break;
+								}
+						}
+					else
+							break;
+				} 
+			while(1)//向后推算 
+				{		
+					if(tmp2==N-1)
+						{
+							if(a[0]==a[i+1]||a[0]=='w')
+								{
+									s++;
+									tmp2=0;	
+									if(s>N)
+										break;
+								}
+								else
+									break;
+						}
+					if(tmp2==N)
+						{
+							p=0;
+							tmp2=0;
+						}
+					else
+						{
+							p=i+1;
+						}
+					if(a[p]==a[tmp2+1]||a[tmp2+1]=='w')	
+						{
+							s++;
+							tmp2++;
+							if(s>N)
+							break;
+						}
+					else
+						break;
+				}
+			if(j==1)
+				a[i]='w';
+			if (s>max)
+				max=s;
+			if(max+2>N)
+				max=N-2;
+		}
+	printf("%d",max+2);
+} 

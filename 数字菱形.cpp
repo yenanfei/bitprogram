@@ -1,0 +1,42 @@
+#include<stdio.h> 
+main() 
+{ 
+   int n,p,q,i,r; 
+ scanf("%d",&n); 
+    for(p=1;p<=n;p++) 
+   { 
+      for(q=1;q<=(n-p);q++)//控制输出的空格  
+     { 
+          printf("  "); 
+      } 
+      for(i=0;i<p;i++)//输出数字部分  
+       { 
+          printf("%-2d",n-i); 
+     } 
+      r=n-i+2; 
+       for(i=n;i>(n-p+1);i--)//输出数字部分  
+     { 
+          printf("%-2d",r); 
+           r++; 
+       } 
+      printf("\n"); 
+ } 
+  for(p=n-1;p>0;p--) 
+  { 
+      for(q=1;q<=(n-p);q++)//控制输出的空格  
+     { 
+          printf("  "); 
+      } 
+      for(i=0;i<p;i++)//输出数字部分  
+       { 
+          printf("%-2d",n-i); 
+     } 
+      r=n-i+2; 
+       for(i=n;i>(n-p+1);i--)//输出数字部分  
+     { 
+          printf("%-2d",r); 
+           r++; 
+       } 
+      printf("\n"); 
+ } 
+}  
